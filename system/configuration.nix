@@ -9,6 +9,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  nix.package = pkgs.nixFlakes;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -142,5 +146,5 @@ programs.zsh.enable = true;
   system.stateVersion = "23.05"; # Did you read the comment?
 
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  # nix.settings.experimental-features = ["nix-command" "flakes"];
 }
