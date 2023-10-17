@@ -8,7 +8,17 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+     # inputs.home-manager.nixosModules.home-manager
     ];
+
+  # home-manager = {
+  #   extraSpecialArgs = { inherit inputs; };
+  #   users = {
+  #     hasibur = import ../users/hasibur/home.nix;
+  #   };
+  # };
+  
+
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -90,9 +100,14 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     # firefox
-    #  thunderbird
+    # thunderbird
     ];
+    shell = pkgs.zsh;
   };
+
+
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -101,9 +116,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     pkgs.git
+     # pkgs.git
      pkgs.gnome.gnome-tweaks
-#     pkgs.wget
+#    pkgs.wget
      pkgs.neovim
      pkgs.nodejs_20
      pkgs.google-chrome
@@ -117,7 +132,7 @@ virtualisation.docker.rootless = {
   enable = true;
   setSocketVariable = true;
 };
-programs.zsh.enable = true;
+# programs.zsh.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

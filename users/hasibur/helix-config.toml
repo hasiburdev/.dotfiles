@@ -1,0 +1,22 @@
+theme = "onedark"
+
+[editor]
+line-number = "relative"
+mouse = true
+
+[editor.cursor-shape]
+insert = "underline"
+normal = "block"
+select = "bar"
+
+[editor.file-picker]
+hidden = true
+
+[keys.normal]
+
+
+[keys.insert]
+j = { j = "normal_mode"}
+
+
+
