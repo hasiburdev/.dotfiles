@@ -6,9 +6,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-     # inputs.home-manager.nixosModules.home-manager
+      # inputs.home-manager.nixosModules.home-manager
     ];
 
   # home-manager = {
@@ -17,7 +18,7 @@
   #     hasibur = import ../users/hasibur/home.nix;
   #   };
   # };
-  
+
 
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
@@ -98,9 +99,9 @@
     isNormalUser = true;
     description = "Hasibur Rahman";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-    # firefox
-    # thunderbird
+    packages = [
+      # firefox
+      # thunderbird
     ];
     shell = pkgs.zsh;
   };
@@ -114,25 +115,17 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     # pkgs.git
-     pkgs.gnome.gnome-tweaks
-#    pkgs.wget
-     pkgs.neovim
-     pkgs.nodejs_20
-     pkgs.google-chrome
-     pkgs.brave
-     pkgs.nodePackages.pnpm
-     pkgs.vlc
+  environment.systemPackages = [
+    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # pkgs.git
   ];
 
-virtualisation.docker.enable = true;
-virtualisation.docker.rootless = {
-  enable = true;
-  setSocketVariable = true;
-};
-# programs.zsh.enable = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+  # programs.zsh.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
