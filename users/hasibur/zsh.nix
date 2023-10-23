@@ -24,7 +24,7 @@
       AGKOZAK_MULTILINE=0
       AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
       autopair-init
-                              '';
+    '';
 
     plugins = with pkgs; [
       {

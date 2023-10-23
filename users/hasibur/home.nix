@@ -19,6 +19,7 @@ in
 
     # CLI Programs
     nodePackages.pnpm
+    ngrok
     neovim
     nodejs_20
     helix
@@ -27,11 +28,12 @@ in
     gnupg
     exa
     ncdu
+    lf
     nil
     nixpkgs-fmt
     nodePackages.typescript
     nodePackages.typescript-language-server
-
+    nodePackages.prettier
     # GUI Programs
     gnome.gnome-tweaks
     alacritty
@@ -40,6 +42,8 @@ in
     google-chrome
     vlc
     unstable.vscode
+    postman
+    zoom-us
 
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
@@ -52,8 +56,9 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    PATH = "$PATH";
     TERMINAL = "alacritty";
+    #    PNPM_HOME = "/home/hasibur/.pnpm/global";
+    #    PATH = "$PNPM_HOME:$PATH";
   };
 
   programs.git = {
